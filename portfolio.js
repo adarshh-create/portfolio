@@ -29,3 +29,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+function copyEmail() {
+            const email = 'hadarsh003@gmail.com';
+            const button = document.getElementById('email-btn-text');
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email).then(() => {
+                    button.textContent = 'Email Copied!';
+                    setTimeout(() => {
+                        button.textContent = 'Copy Email';
+                    }, 2000);
+                }).catch(() => {
+                    fallbackCopyEmail(email, button);
+                });
+            } else {
+                fallbackCopyEmail(email, button);
+            }
+        }
+
+        function fallbackCopyEmail(email, button) {
+            const tempInput = document.createElement('input');
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); // For mobile devices
+            
+            try {
+                document.execCommand('copy');
+                button.textContent = 'Email Copied!';
+                setTimeout(() => {
+                    button.textContent = 'Copy Email';
+                }, 2000);
+            } catch (err) {
+                button.textContent = 'Copy Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy Email';
+                }, 2000);
+            }
+            
+            document.body.removeChild(tempInput);
+        }
