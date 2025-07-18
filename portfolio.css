@@ -566,3 +566,116 @@ footer {
     border: 2px solid #000;
   }
 }
+
+        h2 {
+            text-align: center;
+            margin-bottom: clamp(20px, 5vh, 50px);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: clamp(12px, 2.5vw, 20px);
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .contact-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(8px, 2vw, 15px);
+            padding: clamp(12px, 2.5vw, 18px) clamp(15px, 3vw, 20px);
+            background: #f8f9fa;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: clamp(0.85rem, 2.2vw, 1.1rem);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-color: #0077cc;
+            background: #fff;
+        }
+
+        .contact-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 119, 204, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-button:hover::before {
+            left: 100%;
+        }
+
+        .phone-btn:hover {
+            border-color: #4CAF50;
+        }
+
+        .email-btn:hover {
+            border-color: #2196F3;
+        }
+
+        .resume-btn:hover {
+            border-color: #FF9800;
+        }
+
+        .linkedin-btn:hover {
+            border-color: #93007d;
+        }
+
+        .contact-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .icon {
+            width: clamp(25px, 5vw, 40px);
+            height: clamp(25px, 5vw, 40px);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            fill: currentColor;
+        }
+
+        .icon:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            #contact {
+                margin: clamp(10px, 2vh, 20px) clamp(5px, 1vw, 15px);
+                padding: clamp(25px, 5vh, 40px) clamp(10px, 3vw, 20px);
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .contact-button {
+                padding: 10px 12px;
+                gap: 8px;
+            }
+        }
